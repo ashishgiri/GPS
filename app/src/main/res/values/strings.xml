@@ -4,5 +4,9 @@
     <string name="app_name">GPS</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="current_location_label">Your home location is set as:</string>
+    <string name="change_location_button_label">Change Home Location</string>
+    <string name="current_status_label">Your current status is that you are:</string>
+    <string name="title_activity_location_selection">Select Location</string>
 
 </resources>
