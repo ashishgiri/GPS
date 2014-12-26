@@ -3,13 +3,10 @@ package com.github.skyisthelimit.gps;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +17,6 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
 public class HomeActivity extends Activity {
     private TextView homeLocationText;
     private TextView currentLocationText;
@@ -34,8 +25,6 @@ public class HomeActivity extends Activity {
 
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1;
     private static final long MINIMUM_TIME_BETWEEN_UPDATES = 100;
-
-    private LocationManager locationManager;
 
     public static final int LOCATION_UPDATE_REQUEST_CODE = 0x0001;
     public static final int RADIUS_TO_CHECK_FOR = 100;
@@ -63,9 +52,9 @@ public class HomeActivity extends Activity {
         this.distanceText = (TextView) findViewById(R.id.distance_text);
         this.currentStatusText = (TextView) findViewById(R.id.current_status_text);
 
-        this.locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMUM_TIME_BETWEEN_UPDATES, MINIMUM_DISTANCE_CHANGE_FOR_UPDATES, new MyLocationListener());
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMUM_TIME_BETWEEN_UPDATES, MINIMUM_DISTANCE_CHANGE_FOR_UPDATES, new MyLocationListener());
 
         this.homeLocation = new LatLng(41.8789, 87.6358);
 

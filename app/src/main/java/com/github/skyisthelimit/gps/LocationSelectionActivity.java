@@ -1,47 +1,17 @@
 package com.github.skyisthelimit.gps;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
 public class LocationSelectionActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-
-//    @Override
-//    public boolean onTouch(View v, MotionEvent event) {
-        /*if(event.getAction() == MotionEvent.ACTION_UP)
-        {
-            HelloItemizedOverlay itemizedoverlay = new HelloItemizedOverlay(drawable, HelloGoogleMaps.this);
-            GeoPoint p = mapView.getProjection().fromPixels(
-                    (int) event.getX(), (int) event.getY());
-            String lat = Double.toString(p.getLatitudeE6() / (Math.pow(10,6)));
-            String lon = Double.toString(p.getLongitudeE6() / (Math.pow(10,6)));
-            OverlayItem overlayitem = new OverlayItem(p, "Title text", "Body Text");
-            itemizedoverlay.addOverlay(overlayitem);
-            mapOverlays.add(itemizedoverlay);
-            map.postInvalidate();
-            Intent i = new Intent();
-            i.putExtra("latitude", Double.parseDouble(lat));
-            i.putExtra("longitude", Double.parseDouble(lon));
-            this.setResult(RESULT_OK, i);
-            finish();
-            return true;
-        }*/
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +22,6 @@ public class LocationSelectionActivity extends FragmentActivity {
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                Log.i("MAPCLICK", latLng.latitude + " : " + latLng.longitude + " : " + latLng.toString());
-
                 Intent result = new Intent();
                 result.putExtra("location", latLng);
 
